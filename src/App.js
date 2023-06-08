@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import axios from 'axios'
+import { Route, Routes } from 'react-router-dom';
+import MainPage from './Pages/Mainpage'
+import Menu from './Pages/Menu'
+import { API_URL } from './config';
 
 function App() {
+  const [categories,setCategories] = React.useState([])
+    React.useEffect(()=>{
+        axios.get(`${API_URL}/categories`).then(response=>{
+            setCategories(response.data)
+        })
+    },[])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    <Routes>
+      <Route path="/" element={<MainPage/>}/>
+      <Route path="/category/:id" element={<Menu categories={categories}/>}/>
+    </Routes>
     </div>
   );
 }
-
 export default App;
