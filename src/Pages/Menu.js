@@ -93,7 +93,7 @@ function Menu({categories}) {
                                                     mb :"3px",
                                                     fontWeight: params.id == category.id ? 'bold' : 'normal'
                                                 }}>
-                                                {category.category_name.toLocaleUpperCase(undefined,{usage:'title'})}
+                                                {category.category_name}
                                             </Typography>
                                         }
                                     />
