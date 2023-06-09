@@ -12,6 +12,7 @@ function App() {
             setCategories(response.data)
         })
     },[])
+    
   return (
     <div>
     <Routes>
